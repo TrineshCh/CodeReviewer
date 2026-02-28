@@ -158,19 +158,17 @@ const LoginPage = () => {
             <p className="text-[14px] text-white/70 leading-relaxed">
               AI-powered code analysis, structured reviews, and skill tracking for your engineering team.
             </p>
-            <div className="flex gap-6 mt-4">
-              <div>
-                <p className="text-[20px] font-bold text-white tabular-nums">12+</p>
-                <p className="text-[11px] text-white/40 uppercase tracking-wider">Members</p>
-              </div>
-              <div>
-                <p className="text-[20px] font-bold text-white tabular-nums">18</p>
-                <p className="text-[11px] text-white/40 uppercase tracking-wider">Tech Stacks</p>
-              </div>
-              <div>
-                <p className="text-[20px] font-bold text-white tabular-nums">AI</p>
-                <p className="text-[11px] text-white/40 uppercase tracking-wider">Code Review</p>
-              </div>
+            <div className="flex gap-3 mt-4">
+              {[
+                { value: '12+', label: 'Members' },
+                { value: '18', label: 'Tech Stacks' },
+                { value: 'AI', label: 'Code Review' },
+              ].map((stat) => (
+                <div key={stat.label} className="flex-1 bg-white/10 border border-white/10 rounded-lg px-4 py-3">
+                  <p className="text-[20px] font-bold text-white tabular-nums">{stat.value}</p>
+                  <p className="text-[11px] text-white/40 uppercase tracking-wider">{stat.label}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
