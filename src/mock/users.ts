@@ -20,6 +20,15 @@ export const users: User[] = [
     teamId: 'team-2',
     designation: 'Engineering Manager',
   },
+  {
+    id: 'admin-3',
+    name: 'Trinath M',
+    email: 'trinath@company.com',
+    role: 'admin',
+    avatar: 'https://i.pravatar.cc/150?u=admin3',
+    teamId: 'team-1',
+    designation: 'Tech Lead',
+  },
   // Employees
   {
     id: 'emp-1',
@@ -140,5 +149,15 @@ export const users: User[] = [
     teamId: 'team-3',
     designation: 'Cloud Intern',
     joinedAt: '2025-05-01',
+  },
+  {
+    id: 'emp-13',
+    name: 'Praveen Reddy',
+    email: 'praveen@company.com',
+    role: 'employee',
+    avatar: 'https://i.pravatar.cc/150?u=emp13',
+    teamId: 'team-1',
+    designation: 'Software Engineer',
+    joinedAt: '2025-11-01',
   },
 ];
