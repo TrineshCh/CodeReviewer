@@ -14,11 +14,16 @@ const bgColors: Record<string, string> = {
   purple: 'bg-[hsl(270_25%_92%)] dark:bg-purple-950/40',
 };
 
-export const StatCard = ({ label, value, color }: StatCardProps) => {
+export const StatCard = ({ label, value, color, icon: Icon }: StatCardProps) => {
   return (
-    <div className={`rounded-xl px-6 py-7 text-center ${bgColors[color] || 'bg-muted'}`}>
-      <p className="text-[28px] font-bold tracking-tight tabular-nums text-foreground">{value}</p>
-      <p className="text-[14px] text-muted-foreground mt-1">{label}</p>
+    <div className={`rounded-xl px-4 py-4 ${bgColors[color] || 'bg-muted'}`}>
+      <div className="flex items-center gap-3">
+        {Icon && <Icon className="h-5 w-5 text-muted-foreground shrink-0" />}
+        <div>
+          <p className="text-[24px] font-bold tracking-tight tabular-nums text-foreground">{value}</p>
+          <p className="text-[13px] text-muted-foreground">{label}</p>
+        </div>
+      </div>
     </div>
   );
 };

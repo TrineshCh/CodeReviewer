@@ -101,58 +101,57 @@ const AdminEmployeeList = () => {
 
           return (
             <Card key={emp.id} className="flex flex-col">
-              <CardContent className="px-7 pt-5 pb-4 flex-1 flex flex-col">
-                <div className="flex items-center gap-4 mb-6">
-                  <Avatar className="h-14 w-14 shrink-0">
+              <CardContent className="px-4 pt-3 pb-3 flex-1 flex flex-col">
+                <div className="flex items-center gap-3 mb-3">
+                  <Avatar className="h-10 w-10 shrink-0">
                     <AvatarImage src={emp.avatar} />
-                    <AvatarFallback className="text-base font-medium bg-muted">{emp.name.charAt(0)}</AvatarFallback>
+                    <AvatarFallback className="text-sm font-medium bg-muted">{emp.name.charAt(0)}</AvatarFallback>
                   </Avatar>
-                  <div className="min-w-0">
-                    <p className="text-[18px] font-semibold truncate leading-tight">{emp.name}</p>
-                    <p className="text-[14px] text-muted-foreground mt-0.5">{emp.designation}</p>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-semibold truncate leading-tight">{emp.name}</p>
+                    <p className="text-xs text-muted-foreground">{emp.designation}</p>
                   </div>
                 </div>
 
                 {topSkills.length > 0 && (
-                  <div className="flex gap-2 flex-wrap mb-6">
+                  <div className="flex gap-1 flex-wrap mb-3">
                     {topSkills.map(([tech, data]) => (
-                      <Badge key={tech} variant="secondary" className="text-[13px] px-3 py-1 font-normal text-muted-foreground">
+                      <Badge key={tech} variant="secondary" className="text-xs px-2 py-0.5 font-normal text-muted-foreground">
                         {TECH_STACK_LABELS[tech] || tech} {data.average.toFixed(0)}
                       </Badge>
                     ))}
                   </div>
                 )}
 
-                <div className="grid grid-cols-2 gap-x-8 gap-y-4 mb-6">
+                <div className="grid grid-cols-2 gap-x-3 gap-y-1 mb-3">
                   <div>
-                    <p className="text-[13px] text-muted-foreground mb-0.5">Total tasks</p>
-                    <p className="text-[20px] font-bold tabular-nums leading-tight">{empTasks.length}</p>
+                    <p className="text-xs text-muted-foreground">Tasks</p>
+                    <p className="text-sm font-bold tabular-nums">{empTasks.length}</p>
                   </div>
                   <div>
-                    <p className="text-[13px] text-muted-foreground mb-0.5">Completed</p>
-                    <p className="text-[20px] font-bold tabular-nums leading-tight">{completedTasks}</p>
+                    <p className="text-xs text-muted-foreground">Done</p>
+                    <p className="text-sm font-bold tabular-nums text-emerald-600">{completedTasks}</p>
                   </div>
                   <div>
-                    <p className="text-[13px] text-muted-foreground mb-0.5">Avg score</p>
+                    <p className="text-xs text-muted-foreground">Score</p>
                     {scores && scores.overallAverage > 0 ? (
-                      <p className={`text-[20px] font-bold tabular-nums leading-tight ${scoreColor(scores.overallAverage)}`}>
-                        {scores.overallAverage.toFixed(1)}/10
+                      <p className={`text-sm font-bold tabular-nums ${scoreColor(scores.overallAverage)}`}>
+                        {scores.overallAverage.toFixed(1)}
                       </p>
                     ) : (
-                      <p className="text-[20px] font-bold text-muted-foreground/40 leading-tight">N/A</p>
+                      <p className="text-sm font-bold text-muted-foreground/40">—</p>
                     )}
                   </div>
                   <div>
-                    <p className="text-[13px] text-muted-foreground mb-0.5">Reviews</p>
-                    <p className="text-[20px] font-bold tabular-nums leading-tight">{scores?.totalTasksCompleted || 0}</p>
+                    <p className="text-xs text-muted-foreground">Reviews</p>
+                    <p className="text-sm font-bold tabular-nums">{scores?.totalTasksCompleted || 0}</p>
                   </div>
                 </div>
 
-                <div className="mt-auto">
-                  <Separator className="mb-5" />
+                <div className="mt-auto pt-2">
                   <Button
                     variant="outline"
-                    className="w-full text-[15px] font-medium h-11 rounded-xl"
+                    className="w-full text-xs font-medium h-8 rounded-md"
                     onClick={() => navigate(`/admin/employees/${emp.id}`)}
                   >
                     View details

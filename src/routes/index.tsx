@@ -11,11 +11,15 @@ import AdminEmployeeDetail from '../pages/admin/AdminEmployeeDetail';
 import AdminSkillMatrix from '../pages/admin/AdminSkillMatrix';
 import AdminTeamView from '../pages/admin/AdminTeamView';
 import AdminTechStack from '../pages/admin/AdminTechStack';
+import AdminProfile from '../pages/admin/AdminProfile';
+import TechStackMembers from '../pages/admin/TechStackMembers';
+import AdminAnalytics from '../pages/admin/AdminAnalytics';
 import EmployeeDashboard from '../pages/employee/EmployeeDashboard';
 import EmployeeSubmitTask from '../pages/employee/EmployeeSubmitTask';
 import EmployeeTaskHistory from '../pages/employee/EmployeeTaskHistory';
 import EmployeeTaskDetail from '../pages/employee/EmployeeTaskDetail';
 import EmployeeFeedback from '../pages/employee/EmployeeFeedback';
+import EmployeeProfile from '../pages/employee/EmployeeProfile';
 
 export const router = createBrowserRouter([
   {
@@ -40,9 +44,12 @@ export const router = createBrowserRouter([
       { path: 'tasks/:taskId', element: <AdminTaskReview /> },
       { path: 'employees', element: <AdminEmployeeList /> },
       { path: 'employees/:empId', element: <AdminEmployeeDetail /> },
-      { path: 'skill-matrix', element: <AdminSkillMatrix /> },
       { path: 'teams', element: <AdminTeamView /> },
       { path: 'tech-stack', element: <AdminTechStack /> },
+      { path: 'tech-stack-members', element: <TechStackMembers /> },
+      { path: 'skill-matrix', element: <AdminSkillMatrix /> },
+      { path: 'analytics', element: <AdminAnalytics /> },
+      { path: 'profile', element: <AdminProfile /> },
     ],
   },
   {
@@ -59,6 +66,7 @@ export const router = createBrowserRouter([
       { path: 'tasks', element: <EmployeeTaskHistory /> },
       { path: 'tasks/:taskId', element: <EmployeeTaskDetail /> },
       { path: 'feedback', element: <EmployeeFeedback /> },
+      { path: 'profile', element: <EmployeeProfile /> },
     ],
   },
 ]);

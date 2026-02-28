@@ -14,7 +14,7 @@ import { TECH_STACKS, TECH_STACK_LABELS } from '@/utils/constants';
 import { isValidGitHubUrl } from '@/utils/validators';
 import { cn } from '@/lib/utils';
 import { Loader2 } from 'lucide-react';
-import { FiGithub } from 'react-icons/fi';
+import { FiGithub, FiUpload, FiX, FiFile } from 'react-icons/fi';
 
 const EmployeeSubmitTask = () => {
   const { currentUser } = useAuth();
@@ -29,11 +29,40 @@ const EmployeeSubmitTask = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [attachedFiles, setAttachedFiles] = useState<File[]>([]);
 
   const toggleTech = (tech: string) => {
     setSelectedTechStacks((prev) =>
       prev.includes(tech) ? prev.filter((t) => t !== tech) : [...prev, tech]
     );
+  };
+
+  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(event.target.files || []);
+    const validFiles = files.filter(file => {
+      const isValidType = file.type.startsWith('image/') || file.type === 'application/pdf' || file.type === 'text/plain';
+      const isValidSize = file.size <= 10 * 1024 * 1024; // 10MB limit
+      return isValidType && isValidSize;
+    });
+    
+    if (validFiles.length !== files.length) {
+      setErrors(prev => ({
+        ...prev,
+        files: 'Some files were invalid. Please upload images (JPG, PNG), PDF, or text files under 10MB.'
+      }));
+    }
+    
+    setAttachedFiles(prev => [...prev, ...validFiles]);
+  };
+
+  const removeFile = (index: number) => {
+    setAttachedFiles(prev => prev.filter((_, i) => i !== index));
+    if (errors.files) {
+      setErrors(prev => {
+        const { files, ...rest } = prev;
+        return rest;
+      });
+    }
   };
 
   const validate = () => {
@@ -56,7 +85,11 @@ const EmployeeSubmitTask = () => {
         title, description,
         githubRepoLink: githubLink,
         techStacks: selectedTechStacks,
-        screenshots: [],
+        screenshots: attachedFiles.map(file => ({
+          id: Math.random().toString(36).substr(2, 9),
+          url: URL.createObjectURL(file),
+          caption: file.name
+        })),
         teamId: currentUser.teamId,
       });
       setIsSubmitting(false);
@@ -162,6 +195,72 @@ const EmployeeSubmitTask = () => {
               })}
             </div>
             {errors.techStacks && <p className="text-[13px] text-destructive mt-1.5">{errors.techStacks}</p>}
+          </div>
+
+          <Separator />
+
+          <div>
+            <label className="text-[15px] font-medium mb-2.5 block">
+              <FiFile className="inline h-4.5 w-4.5 mr-1 -mt-0.5" />
+              Attach Files <span className="text-muted-foreground font-normal ml-1.5">(Optional)</span>
+              {attachedFiles.length > 0 && (
+                <span className="text-muted-foreground font-normal ml-1.5">({attachedFiles.length} files)</span>
+              )}
+            </label>
+            <div className="space-y-3">
+              <div className="border-2 border-dashed border-muted-foreground/30 rounded-lg p-6 text-center hover:border-muted-foreground/50 transition-colors">
+                <input
+                  type="file"
+                  multiple
+                  accept="image/*,.pdf,.txt"
+                  onChange={handleFileUpload}
+                  className="hidden"
+                  id="file-upload"
+                />
+                <label
+                  htmlFor="file-upload"
+                  className="cursor-pointer flex flex-col items-center gap-2"
+                >
+                  <FiUpload className="h-8 w-8 text-muted-foreground" />
+                  <div>
+                    <p className="text-[15px] font-medium text-foreground">Click to upload files</p>
+                    <p className="text-[13px] text-muted-foreground">or drag and drop</p>
+                    <p className="text-[12px] text-muted-foreground/60 mt-1">Images, PDF, or text files (max 10MB each)</p>
+                  </div>
+                </label>
+              </div>
+              
+              {attachedFiles.length > 0 && (
+                <div className="space-y-2">
+                  <p className="text-[13px] font-medium text-foreground">Attached Files:</p>
+                  {attachedFiles.map((file, index) => (
+                    <div key={index} className="flex items-center justify-between p-3 bg-muted/30 rounded-md border">
+                      <div className="flex items-center gap-3 min-w-0">
+                        <FiFile className="h-4 w-4 text-muted-foreground shrink-0" />
+                        <div className="min-w-0">
+                          <p className="text-[13px] font-medium truncate">{file.name}</p>
+                          <p className="text-[12px] text-muted-foreground">
+                            {(file.size / 1024 / 1024).toFixed(2)} MB
+                          </p>
+                        </div>
+                      </div>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => removeFile(index)}
+                        className="h-8 w-8 p-0 text-muted-foreground hover:text-destructive"
+                      >
+                        <FiX className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  ))}
+                </div>
+              )}
+              
+              {errors.files && (
+                <p className="text-[13px] text-destructive mt-1.5">{errors.files}</p>
+              )}
+            </div>
           </div>
 
           <Separator />
