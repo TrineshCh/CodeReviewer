@@ -1,0 +1,145 @@
+import { EmployeeScore } from '../types';
+
+export const employeeScores: EmployeeScore[] = [
+  {
+    employeeId: 'emp-1',
+    scores: {
+      nodejs: { total: 14, count: 2, average: 7.0 },
+      express: { total: 8, count: 1, average: 8.0 },
+      sql: { total: 6, count: 1, average: 6.0 },
+      typescript: { total: 7, count: 1, average: 7.0 },
+      java: { total: 0, count: 0, average: 0 },
+      spring: { total: 0, count: 0, average: 0 },
+    },
+    overallAverage: 7.0,
+    totalTasksCompleted: 1,
+    totalTasksRejected: 0,
+  },
+  {
+    employeeId: 'emp-2',
+    scores: {
+      react: { total: 0, count: 0, average: 0 },
+      typescript: { total: 0, count: 0, average: 0 },
+      tailwind: { total: 0, count: 0, average: 0 },
+    },
+    overallAverage: 0,
+    totalTasksCompleted: 0,
+    totalTasksRejected: 0,
+  },
+  {
+    employeeId: 'emp-3',
+    scores: {
+      sql: { total: 7, count: 1, average: 7.0 },
+      nodejs: { total: 5, count: 1, average: 5.0 },
+    },
+    overallAverage: 6.0,
+    totalTasksCompleted: 1,
+    totalTasksRejected: 0,
+  },
+  {
+    employeeId: 'emp-4',
+    scores: {
+      react: { total: 9, count: 1, average: 9.0 },
+      typescript: { total: 8, count: 1, average: 8.0 },
+      tailwind: { total: 9, count: 1, average: 9.0 },
+    },
+    overallAverage: 8.7,
+    totalTasksCompleted: 1,
+    totalTasksRejected: 0,
+  },
+  {
+    employeeId: 'emp-5',
+    scores: {
+      nodejs: { total: 0, count: 0, average: 0 },
+      graphql: { total: 0, count: 0, average: 0 },
+      typescript: { total: 0, count: 0, average: 0 },
+      docker: { total: 0, count: 0, average: 0 },
+    },
+    overallAverage: 0,
+    totalTasksCompleted: 0,
+    totalTasksRejected: 0,
+  },
+  {
+    employeeId: 'emp-6',
+    scores: {
+      react: { total: 7, count: 1, average: 7.0 },
+      nodejs: { total: 7, count: 1, average: 7.0 },
+      express: { total: 7, count: 1, average: 7.0 },
+      mongodb: { total: 6, count: 1, average: 6.0 },
+      python: { total: 8, count: 1, average: 8.0 },
+      django: { total: 9, count: 1, average: 9.0 },
+      sql: { total: 7, count: 1, average: 7.0 },
+    },
+    overallAverage: 7.3,
+    totalTasksCompleted: 2,
+    totalTasksRejected: 0,
+  },
+  {
+    employeeId: 'emp-7',
+    scores: {
+      docker: { total: 0, count: 0, average: 0 },
+      nodejs: { total: 0, count: 0, average: 0 },
+      aws: { total: 0, count: 0, average: 0 },
+    },
+    overallAverage: 0,
+    totalTasksCompleted: 0,
+    totalTasksRejected: 0,
+  },
+  {
+    employeeId: 'emp-8',
+    scores: {
+      python: { total: 8, count: 1, average: 8.0 },
+      sql: { total: 7, count: 1, average: 7.0 },
+      aws: { total: 7, count: 1, average: 7.0 },
+    },
+    overallAverage: 7.3,
+    totalTasksCompleted: 1,
+    totalTasksRejected: 0,
+  },
+  {
+    employeeId: 'emp-9',
+    scores: {
+      nodejs: { total: 0, count: 0, average: 0 },
+      express: { total: 0, count: 0, average: 0 },
+      typescript: { total: 0, count: 0, average: 0 },
+      sql: { total: 0, count: 0, average: 0 },
+    },
+    overallAverage: 0,
+    totalTasksCompleted: 0,
+    totalTasksRejected: 0,
+  },
+  {
+    employeeId: 'emp-10',
+    scores: {
+      typescript: { total: 4, count: 1, average: 4.0 },
+      nodejs: { total: 4, count: 1, average: 4.0 },
+      react: { total: 3, count: 1, average: 3.0 },
+    },
+    overallAverage: 3.7,
+    totalTasksCompleted: 0,
+    totalTasksRejected: 1,
+  },
+  {
+    employeeId: 'emp-11',
+    scores: {
+      react: { total: 8, count: 1, average: 8.0 },
+      typescript: { total: 8, count: 1, average: 8.0 },
+      nodejs: { total: 7, count: 1, average: 7.0 },
+    },
+    overallAverage: 7.7,
+    totalTasksCompleted: 1,
+    totalTasksRejected: 0,
+  },
+  {
+    employeeId: 'emp-12',
+    scores: {
+      aws: { total: 0, count: 0, average: 0 },
+      nodejs: { total: 0, count: 0, average: 0 },
+      python: { total: 0, count: 0, average: 0 },
+      docker: { total: 0, count: 0, average: 0 },
+    },
+    overallAverage: 0,
+    totalTasksCompleted: 0,
+    totalTasksRejected: 0,
+  },
+];
