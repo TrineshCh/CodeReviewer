@@ -151,21 +151,22 @@ const LoginPage = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/10" />
         <div className="absolute bottom-0 left-0 right-0 p-8">
-          <div className="backdrop-blur-xl bg-white/10 rounded-xl p-6 border border-white/10">
-            <div className="bg-white/20 px-3 py-1 w-fit mb-3">
-              <span className="text-[26px] tracking-wide text-white" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700 }}>Ryft</span>
+          <div className="backdrop-blur-xl bg-white/10 rounded-xl p-6 border border-white/10 flex items-center justify-between">
+            <div>
+              <div className="bg-white/20 px-3 py-1 w-fit mb-1.5">
+                <span className="text-[22px] tracking-wide text-white" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700 }}>Ryft</span>
+              </div>
+              <p className="text-[13px] text-white/50 leading-relaxed">AI-powered code analysis and</p>
+              <p className="text-[13px] text-white/50 leading-relaxed">structured reviews for your team.</p>
             </div>
-            <p className="text-[14px] text-white/70 leading-relaxed">
-              AI-powered code analysis, structured reviews, and skill tracking for your engineering team.
-            </p>
-            <div className="flex gap-3 mt-4">
+            <div className="flex gap-14">
               {[
                 { value: '12+', label: 'Members' },
                 { value: '18', label: 'Tech Stacks' },
                 { value: 'AI', label: 'Code Review' },
               ].map((stat) => (
-                <div key={stat.label} className="flex-1 bg-white/10 border border-white/10 rounded-lg px-4 py-3">
-                  <p className="text-[20px] font-bold text-white tabular-nums">{stat.value}</p>
+                <div key={stat.label}>
+                  <p className="text-[46px] font-bold text-white tabular-nums">{stat.value}</p>
                   <p className="text-[11px] text-white/40 uppercase tracking-wider">{stat.label}</p>
                 </div>
               ))}
